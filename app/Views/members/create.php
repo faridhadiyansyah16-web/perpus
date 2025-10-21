@@ -41,9 +41,14 @@
         </div>
       </div>
       <div class="row">
-            <div class="col-12 col-md-6 mb-3">
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
           <label for="kelas" class="form-label">Kelas</label>
-          <input type="text" class="form-control <?php if ($validation->hasError('kelas')) : ?>is-invalid<?php endif ?>" id="kelas" name="kelas" value="<?= $oldInput['kelas'] ?? ''; ?>" placeholder="kelas..." required>
+          <select class="form-select <?php if ($validation->hasError('kelas')) : ?>is-invalid<?php endif ?>" aria-label="Select kelas" id="kelas" name="kelas" value="<?= $oldInput['kelas'] ?? ''; ?>" required>
+            <option>--Pilih Kelas--</option>
+            <?php foreach ($kelas as $class) : ?>
+              <option value="<?= $class['kelas']; ?>" <?= ($oldInput['kelas'] ?? '') == $class['id'] ? 'selected' : ''; ?>><?= $class['kelas']; ?></option>
+            <?php endforeach; ?>
+          </select>
           <div class="invalid-feedback">
             <?= $validation->getError('kelas'); ?>
           </div>
@@ -58,37 +63,6 @@
           </div>
         </div>
       </div>
-      <!--<div class="row">
-        <div class="col-12 col-md-6 mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control <?php if ($validation->hasError('email')) : ?>is-invalid<?php endif ?>" id="email" name="email" value="<?= $oldInput['email'] ?? ''; ?>" placeholder="johndoe@gmail.com" required>
-          <div class="invalid-feedback">
-            <?= $validation->getError('email'); ?>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 mb-3">
-          <label for="phone" class="form-label">Nomor telepon</label>
-          <input type="tel" class="form-control <?php if ($validation->hasError('phone')) : ?>is-invalid<?php endif ?>" id="phone" name="phone" value="<?= $oldInput['phone'] ?? ''; ?>" placeholder="+628912345" required>
-          <div class="invalid-feedback">
-            <?= $validation->getError('phone'); ?>
-          </div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="address" class="form-label">Alamat</label>
-        <textarea class="form-control <?php if ($validation->hasError('address')) : ?>is-invalid<?php endif ?>" id="address" name="address" required><?= $oldInput['address'] ?? ''; ?></textarea>
-        <div class="invalid-feedback">
-          <?= $validation->getError('address'); ?>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-6 mb-3">
-          <label for="date_of_birth" class="form-label">Tanggal lahir</label>
-          <input type="date" class="form-control <?php if ($validation->hasError('date_of_birth')) : ?>is-invalid<?php endif ?>" id="date_of_birth" name="date_of_birth" value="<?= $oldInput['date_of_birth'] ?? ''; ?>" required>
-          <div class="invalid-feedback">
-            <?= $validation->getError('date_of_birth'); ?>
-          </div>
-        </div>-->
       <div class="row">
         <div class="col-12 col-md-6 mb-3">
           <label class="form-label">Jenis kelamin</label>

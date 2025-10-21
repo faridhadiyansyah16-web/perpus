@@ -24,7 +24,7 @@ class KelasController extends ResourceController
     {
         $itemPerPage = 20;
 
-        $kelas = $this->kelasModel->paginate($itemPerPage, 'kelass');
+        $kelas = $this->kelasModel->paginate($itemPerPage, 'kelas');
 
 
         $data = [

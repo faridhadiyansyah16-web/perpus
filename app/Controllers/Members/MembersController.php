@@ -8,6 +8,7 @@ use App\Models\BookStockModel;
 use App\Models\FineModel;
 use App\Models\LoanModel;
 use App\Models\MemberModel;
+use App\Models\KelasModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\RESTful\ResourceController;
@@ -19,6 +20,7 @@ class MembersController extends ResourceController
     protected BookStockModel $bookStockModel;
     protected LoanModel $loanModel;
     protected FineModel $fineModel;
+    protected KelasModel $kelasModel;
 
     public function __construct()
     {
@@ -27,6 +29,8 @@ class MembersController extends ResourceController
         $this->bookStockModel = new BookStockModel;
         $this->loanModel = new LoanModel;
         $this->fineModel = new FineModel;
+        $this->kelasModel = new KelasModel;
+
 
         helper('upload');
     }
@@ -161,9 +165,17 @@ class MembersController extends ResourceController
      */
     public function new()
     {
-        return view('members/create', [
-            'validation' => \Config\Services::validation()
-        ]);
+        $kelas = $this->kelasModel->findAll();
+
+        $data = [
+            'kelas' => $kelas,
+            'validation' => \Config\Services::validation(),
+        ];
+
+        return view('members/create', $data);
+        // return view('members/create', [
+        //     'validation' => \Config\Services::validation()
+        // ]);
     }
 
     /**
@@ -184,7 +196,9 @@ class MembersController extends ResourceController
             // 'date_of_birth' => 'required|valid_date',
             'gender'        => 'required|alpha_numeric_punct',
         ])) {
+            $kelas = $this->kelasModel->findAll();
             $data = [
+                'kelas'      => $kelas,
                 'validation' => \Config\Services::validation(),
                 'oldInput'   => $this->request->getVar(),
             ];
@@ -224,7 +238,9 @@ class MembersController extends ResourceController
             'gender'        => $this->request->getVar('gender'),
             'qr_code'       => $qrCode
         ])) {
+            $kelas = $this->kelasModel->findAll();
             $data = [
+                'kelas'      => $kelas,
                 'validation' => \Config\Services::validation(),
                 'oldInput'   => $this->request->getVar(),
             ];
@@ -249,9 +265,10 @@ class MembersController extends ResourceController
         if (empty($member)) {
             throw new PageNotFoundException('Member not found');
         }
-
+        $kelas = $this->kelasModel->findAll();
         $data = [
             'member'     => $member,
+            'kelas'      => $kelas, 
             'validation' => \Config\Services::validation(),
         ];
 
@@ -282,8 +299,10 @@ class MembersController extends ResourceController
             'date_of_birth' => 'required|valid_date',*/
             'gender'        => 'required|alpha_numeric_punct',
         ])) {
+            $kelas = $this->kelasModel->findAll();
             $data = [
                 'member'     => $member,
+                'kelas'      => $kelas,
                 'validation' => \Config\Services::validation(),
                 'oldInput'   => $this->request->getVar(),
             ];
@@ -292,16 +311,18 @@ class MembersController extends ResourceController
         }
 
         $firstName = $this->request->getVar('first_name');
-        $email = $this->request->getVar('email');
-        $phone = $this->request->getVar('phone');
+        // $email = $this->request->getVar('email');
+        // $phone = $this->request->getVar('phone');
+        $kelas  = $this->request->getVar('kelas');
+        $nis    = $this->request->getVar('nis');
         $gender = $this->request->getVar('gender');
 
         $isChanged = ($firstName != $member['first_name']
-            || $email != $member['email']
-            || $phone != $member['phone']);
+            || $nis != $member['nis']
+            || $kelas != $member['kelas']);
 
         $uid = $isChanged
-            ? sha1($firstName . $email . $phone . rand(0, 1000) . md5($gender))
+            ? sha1($firstName . $nis . $kelas . rand(0, 1000) . md5($gender))
             : $member['uid'];
 
         if ($isChanged) {
@@ -334,7 +355,9 @@ class MembersController extends ResourceController
             'gender'        => $this->request->getVar('gender'),
             'qr_code'       => $qrCode
         ])) {
+            $kelas = $this->kelasModel->findAll();
             $data = [
+                'kelas'      => $kelas,
                 'validation' => \Config\Services::validation(),
                 'oldInput'   => $this->request->getVar(),
             ];

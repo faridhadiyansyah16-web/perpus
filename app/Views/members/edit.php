@@ -42,9 +42,14 @@
         </div>
       </div>
       <div class="row">
-            <div class="col-12 col-md-6 mb-3">
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
           <label for="kelas" class="form-label">Kelas</label>
-          <input type="text" class="form-control <?php if ($validation->hasError('kelas')) : ?>is-invalid<?php endif ?>" id="kelas" name="kelas" value="<?= $oldInput['kelas'] ?? $member['kelas'] ?? ''; ?>" placeholder="kelas..." required>
+          <select class="form-select <?php if ($validation->hasError('kelas')) : ?>is-invalid<?php endif ?>" aria-label="Select kelas" id="kelas" name="kelas" value="<?= $oldInput['kelas'] ?? $member['kelas']; ?>" required>
+            <option>--Pilih Kelas--</option>
+            <?php foreach ($kelas as $class) : ?>
+              <option value="<?= $class['kelas']; ?>" <?= ($oldInput['kelas'] ?? $class['kelas']) == $class['kelas'] ? 'selected' : $class['kelas']; ?>><?= $class['kelas']; ?></option>
+            <?php endforeach; ?>
+          </select>
           <div class="invalid-feedback">
             <?= $validation->getError('kelas'); ?>
           </div>
