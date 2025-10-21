@@ -48,6 +48,11 @@ $sidebarNavs =
       'link' => '/admin/racks',
       'icon' => 'ti ti-columns'
     ],
+    [
+      'name' => 'Kelas',
+      'link' => '/admin/kelas',
+      'icon' => 'ti ti-user'
+    ],
   ];
 
 if (auth()->user()->inGroup('superadmin') ?? false) {
@@ -73,7 +78,7 @@ if (auth()->user()->inGroup('superadmin') ?? false) {
     <div class="brand-logo d-flex align-items-center justify-content-between">
       <div class="pt-4 mx-auto">
         <a href="<?= base_url(); ?>">
-          <h2>Buku<span class="text-primary">Hub</span></h2>
+          <h4>Aplikasi<span class="text-primary">Perpustakaan</span></h4>
         </a>
       </div>
       <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">

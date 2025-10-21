@@ -176,8 +176,8 @@ class MembersController extends ResourceController
         if (!$this->validate([
             'first_name'    => 'required|alpha_numeric_punct|max_length[100]',
             'last_name'     => 'permit_empty|alpha_numeric_punct|max_length[100]',
-            'nis'           => 'required|alpha_numeric_punct|max_length[20]',
-            'kelas'         => 'required|alpha_numeric_punct|max_length[5]',
+            'nis'           => 'required|alpha_numeric_punct|max_length[8]',
+            'kelas'         => 'required|alpha_numeric_punct|max_length[2]',
             // 'email'         => 'required|valid_email|max_length[255]',
             // 'phone'         => 'required|alpha_numeric_punct|min_length[4]|max_length[20]',
             // 'address'       => 'required|string|min_length[5]|max_length[511]',
@@ -274,8 +274,8 @@ class MembersController extends ResourceController
         if (!$this->validate([
             'first_name'    => 'required|alpha_numeric_punct|max_length[100]',
             'last_name'     => 'permit_empty|alpha_numeric_punct|max_length[100]',
-            'nis'           => 'required|alpha_numeric_punct|max_length[20]',
-            'kelas'         => 'required|alpha_numeric_punct|max_length[5]',
+            'nis'           => 'required|alpha_numeric_punct|max_length[8]',
+            'kelas'         => 'required|alpha_numeric_punct|max_length[2]',
             /*'email'         => 'required|valid_email|max_length[255]',
             'phone'         => 'required|alpha_numeric_punct|min_length[4]|max_length[20]',
             'address'       => 'required|string|min_length[5]|max_length[511]',
