@@ -76,7 +76,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-6 mb-3">
-          <label for="isbn" class="form-label">ISBN</label>
+          <label for="isbn" class="form-label">Klasifikasi</label>
           <input type="number" class="form-control <?php if ($validation->hasError('isbn')) : ?>is-invalid<?php endif ?>" id="isbn" name="isbn" minlength="10" maxlength="13" aria-describedby="isbnHelp" value="<?= $oldInput['isbn'] ?? $book['isbn']; ?>" required>
           <div id="isbnHelp" class="form-text">
             ISBN must be 10-13 characters long, contain only numbers.
