@@ -23,6 +23,7 @@ class BookModel extends Model
         'rack_id',
         'category_id',
         'book_cover',
+        'sumber',
     ];
 
     // Dates

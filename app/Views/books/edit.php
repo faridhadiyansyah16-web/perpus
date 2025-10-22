@@ -65,6 +65,13 @@
               <?= $validation->getError('publisher'); ?>
             </div>
           </div>
+          <div class="mb-3">
+            <label for="sumber" class="form-label">Sumber</label>
+            <input type="text" class="form-control <?php if ($validation->hasError('sumber')) : ?>is-invalid<?php endif ?>" id="sumber" name="sumber" value="<?= $oldInput['sumber'] ?? $book['sumber']; ?>" required>
+            <div class="invalid-feedback">
+              <?= $validation->getError('sumber'); ?>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">

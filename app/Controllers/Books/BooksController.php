@@ -153,6 +153,7 @@ class BooksController extends ResourceController
             'rack'      => 'required|numeric',
             'category'  => 'required|numeric',
             'stock'     => 'required|numeric|greater_than_equal_to[1]',
+            'sumber'    => 'required|string',
         ])) {
             $categories = $this->categoryModel->findAll();
             $racks = $this->rackModel->findAll();
@@ -184,6 +185,7 @@ class BooksController extends ResourceController
             'year' => $this->request->getVar('year'),
             'rack_id' => $this->request->getVar('rack'),
             'category_id' => $this->request->getVar('category'),
+            'sumber' => $this->request->getVar('sumber'),
             'book_cover' => $coverImageFileName ?? null,
         ]) || !$this->bookStockModel->save([
             'book_id' => $this->bookModel->getInsertID(),
@@ -259,6 +261,7 @@ class BooksController extends ResourceController
             'rack'      => 'required|numeric',
             'category'  => 'required|numeric',
             'stock'     => 'required|numeric|greater_than_equal_to[1]',
+            'sumber'    => 'required|string',
         ])) {
             $categories = $this->categoryModel->findAll();
             $racks = $this->rackModel->findAll();
@@ -301,6 +304,7 @@ class BooksController extends ResourceController
             'year' => $this->request->getVar('year'),
             'rack_id' => $this->request->getVar('rack'),
             'category_id' => $this->request->getVar('category'),
+            'sumber' => $this->request->getVar('sumber'),
             'book_cover' => $coverImageFileName ?? null,
         ]) || !$this->bookStockModel->save([
             'id' => $bookStock['id'],
