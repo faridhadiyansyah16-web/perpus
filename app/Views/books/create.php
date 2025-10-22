@@ -76,7 +76,7 @@
           <label for="isbn" class="form-label">Klasifikasi</label>
           <input type="number" class="form-control <?php if ($validation->hasError('isbn')) : ?>is-invalid<?php endif ?>" id="isbn" name="isbn" minlength="10" maxlength="13" aria-describedby="isbnHelp" value="<?= $oldInput['isbn'] ?? ''; ?>" required>
           <div id="isbnHelp" class="form-text">
-            ISBN must be 10-13 characters long, contain only numbers.
+            Klasifikasi must be 5-13 characters long, contain only numbers.
           </div>
           <div class="invalid-feedback">
             <?= $validation->getError('isbn'); ?>
