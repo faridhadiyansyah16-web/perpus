@@ -81,10 +81,10 @@ class GenerateLaporan extends BaseController
         ];
 
       if ($type == 'doc') {
-         $this->response->setHeader('Content-type', 'application/vnd.ms-word');
+         $this->response->setHeader('Content-type', 'application/vnd.ms-excel');
          $this->response->setHeader(
             'Content-Disposition',
-            'attachment;Filename=laporan_buku.doc'
+            'attachment;Filename=laporan_buku.xls'
          );
 
          return view('generate-laporan/laporan-buku-doc', $data);
