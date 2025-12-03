@@ -52,6 +52,10 @@ $sidebarNavs =
       'name' => 'Kelas',
       'link' => '/admin/kelas',
       'icon' => 'ti ti-user'
+    ],[
+      'name' => 'Laporan',
+      'link' => '/admin/laporan',
+      'icon' => 'ti ti-file-text'
     ],
   ];
 

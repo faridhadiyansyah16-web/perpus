@@ -45,6 +45,8 @@ $routes->group('admin', ['filter' => 'session'], static function (RouteCollectio
     $routes->resource('categories', ['controller' => 'Books\CategoriesController']);
     $routes->resource('racks', ['controller' => 'Books\RacksController']);
     $routes->resource('kelas', ['controller' => 'Books\KelasController']);
+    $routes->resource('laporan', ['controller' => 'Laporan\GenerateLaporan']);
+
 
     $routes->get('loans/new/members/search', 'Loans\LoansController::searchMember');
     $routes->get('loans/new/books/search', 'Loans\LoansController::searchBook');
@@ -58,6 +60,11 @@ $routes->group('admin', ['filter' => 'session'], static function (RouteCollectio
     $routes->get('fines/pay/(:any)', 'Loans\FinesController::pay/$1');
     $routes->resource('fines/settings', ['controller' => 'Loans\FineSettingsController', 'filter' => 'group:superadmin']);
     $routes->resource('fines', ['controller' => 'Loans\FinesController']);
+
+    // admin buat laporan
+    $routes->get('laporan', 'Laporan\GenerateLaporan::index');
+    $routes->post('laporan/buku', 'Laporan\GenerateLaporan::generateLaporanBuku');
+    $routes->post('laporan/guru', 'Laporan\GenerateLaporan::generateLaporanGuru');
 
     $routes->group('users', ['filter' => 'group:superadmin'], static function (RouteCollection $routes) {
         $routes->get('new', 'Users\RegisterController::index');

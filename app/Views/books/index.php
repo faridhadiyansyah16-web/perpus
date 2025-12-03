@@ -44,6 +44,11 @@
               Tambah Data Buku
             </a>
           </div>
+          <div>
+            <a href="<?= base_url('admin/books/laporan'); ?>" class="btn btn-primary py-2">
+              Laporan Data Buku
+            </a>
+          </div>
         </div>
       </div>
     </div>

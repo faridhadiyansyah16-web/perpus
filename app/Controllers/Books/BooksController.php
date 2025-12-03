@@ -9,6 +9,7 @@ use App\Models\LoanModel;
 use App\Models\RackModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\RESTful\ResourceController;
+use Dompdf\Dompdf;
 
 class BooksController extends ResourceController
 {
@@ -133,7 +134,7 @@ class BooksController extends ResourceController
             'validation' => \Config\Services::validation(),
         ];
 
-        return view('books/create', $data);
+        return view('books/laporan', $data);
     }
 
     /**
@@ -357,3 +358,7 @@ class BooksController extends ResourceController
         return redirect()->to('admin/books');
     }
 }
+
+
+
+    
