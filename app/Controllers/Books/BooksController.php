@@ -134,7 +134,7 @@ class BooksController extends ResourceController
             'validation' => \Config\Services::validation(),
         ];
 
-        return view('books/laporan', $data);
+        return view('books/create', $data);
     }
 
     /**
