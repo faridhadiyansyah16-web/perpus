@@ -38,7 +38,7 @@ class GenerateLaporan extends BaseController
    {     
       $now = Time::now(locale: 'id');
       $tomorrowMidnight = $now->tomorrow()->toDateTimeString();
-      session()->setFlashdata(['msg' => 'tes ambil tanggal '.$tomorrowMidnight]); 
+      // session()->setFlashdata(['msg' => 'tes ambil tanggal '.$tomorrowMidnight]); 
       $books = $this->bookModel
             ->join('book_stock', 'books.id = book_stock.book_id', 'LEFT')
             ->findAll();
