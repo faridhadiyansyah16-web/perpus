@@ -36,6 +36,9 @@ class GenerateLaporan extends BaseController
 
    public function index()
    {     
+      $now = Time::now(locale: 'id');
+      $tomorrowMidnight = $now->tomorrow()->toDateTimeString();
+      session()->setFlashdata(['msg' => 'tes ambil tanggal '.$tomorrowMidnight]); 
       $books = $this->bookModel
             ->join('book_stock', 'books.id = book_stock.book_id', 'LEFT')
             ->findAll();
@@ -49,6 +52,10 @@ class GenerateLaporan extends BaseController
             }
         );
 
+         $returnDueToday = $this->loanModel
+            ->where("return_date <= '{$tomorrowMidnight}'")
+            ->findAll();
+
         $data = [
             'books'                 => $books,
             'totalBookStock'        => $totalBookStocks,
@@ -56,6 +63,7 @@ class GenerateLaporan extends BaseController
             'categories'            => $this->categoryModel->findAll(),
             'members'               => $this->memberModel->findAll(),
             'loans'                 => $this->loanModel->findAll(),
+            'returnDue'             => $returnDueToday,
         ];
 
       return view('generate-laporan/generate-laporan', $data);
@@ -96,14 +104,14 @@ class GenerateLaporan extends BaseController
    public function generateLaporanLoan()
    {
       $bulan = $this->request->getVar('tanggalGuru');
-      //$begin = new Time($bulan, locale: 'id');
+      
       $dateString = $bulan; // Example date string
       $specificDate = Time::parse($dateString); // Parse the date string
 
       $monthName = $specificDate->format('F');
       $year = $specificDate->format('Y');
       $type = $this->request->getVar('type');
-      //session()->setFlashdata(['msg' => 'tes ambil tanggal '.$monthName.' '.$year]); 
+      
       $loan = $this->loanModel
             ->select('members.*, members.uid as member_uid, books.*, loans.*, loans.qr_code as loan_qr_code, book_stock.quantity as book_stock, racks.name as rack, categories.name as category')
             ->join('members', 'loans.member_id = members.id', 'LEFT')
@@ -119,6 +127,7 @@ class GenerateLaporan extends BaseController
             'loans'                 => $loan,
             'month'                => $monthName,
             'year'                 => $year,
+           
         ];
       
          

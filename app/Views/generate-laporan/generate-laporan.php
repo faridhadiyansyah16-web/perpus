@@ -80,7 +80,8 @@
                         <div class="card h-100">
                            <form action="<?= base_url('admin/laporan/peminjaman'); ?>" method="post" class="card-body d-flex flex-column">
                               <h4 class="text-success"><b>Laporan Peminjaman</b></h4>
-                              <p>Total peminjaman : <b></b></p>
+                              <p>Total peminjaman : <?= count($loans) ?><b></b></p>
+                              <p>Total pengembalian :<?= count($returnDue) ?><b></b></p>
                               <div class="row align-items-center">
                                  <div class="col-auto">
                                     <p class="d-inline"><b>Bulan :</b></p>
