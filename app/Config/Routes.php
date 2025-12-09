@@ -39,7 +39,7 @@ service('auth')->routes($routes);
 $routes->group('admin', ['filter' => 'session'], static function (RouteCollection $routes) {
     $routes->get('/', 'Dashboard\DashboardController');
     $routes->get('dashboard', 'Dashboard\DashboardController::dashboard');
-
+    
     $routes->resource('members', ['controller' => 'Members\MembersController']);
     $routes->resource('books', ['controller' => 'Books\BooksController']);
     $routes->resource('categories', ['controller' => 'Books\CategoriesController']);
@@ -64,7 +64,7 @@ $routes->group('admin', ['filter' => 'session'], static function (RouteCollectio
     // admin buat laporan
     $routes->get('laporan', 'Laporan\GenerateLaporan::index');
     $routes->post('laporan/buku', 'Laporan\GenerateLaporan::generateLaporanBuku');
-    $routes->post('laporan/guru', 'Laporan\GenerateLaporan::generateLaporanGuru');
+    $routes->post('laporan/peminjaman', 'Laporan\GenerateLaporan::generateLaporanLoan');
 
     $routes->group('users', ['filter' => 'group:superadmin'], static function (RouteCollection $routes) {
         $routes->get('new', 'Users\RegisterController::index');

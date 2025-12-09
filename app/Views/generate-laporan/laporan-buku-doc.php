@@ -5,8 +5,7 @@
     <div class="d-flex justify-content-between mb-4">
       <table class="w-100 justify-center">
          <tr>
-            <td>&nbsp;</td>
-            <td width="100%">
+            <td width="100%" colspan="6">
                <h2 align="center">DAFTAR BUKU</h2>
                <h4 align="center"></h4>
                <h4 align="center">PERPUSTAKAAN SMPN 11 KOTA SUKABUMI</h4>

@@ -76,11 +76,11 @@
                            </form>
                         </div>
                      </div>
-                     <!-- <div class="col-md-6">
+                     <div class="col-md-6">
                         <div class="card h-100">
-                           <form action="<?= base_url('admin/laporan/guru'); ?>" method="post" class="card-body d-flex flex-column">
-                              <h4 class="text-success"><b>Laporan Absen Guru</b></h4>
-                              <p>Total jumlah guru : <b></b></p>
+                           <form action="<?= base_url('admin/laporan/peminjaman'); ?>" method="post" class="card-body d-flex flex-column">
+                              <h4 class="text-success"><b>Laporan Peminjaman</b></h4>
+                              <p>Total peminjaman : <b></b></p>
                               <div class="row align-items-center">
                                  <div class="col-auto">
                                     <p class="d-inline"><b>Bulan :</b></p>
@@ -109,7 +109,7 @@
                                        </div>
                                        <div class="col">
                                           <div class="text-start">
-                                             <h4 class="d-inline"><b>Generate doc</b></h4>
+                                             <h4 class="d-inline"><b>Generate excel</b></h4>
                                           </div>
                                        </div>
                                     </div>
@@ -117,7 +117,7 @@
                               </div>
                            </form>
                         </div>
-                     </div> -->
+                     </div>
                   </div>
                   <br><br>
                </div>
